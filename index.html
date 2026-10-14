@@ -1,0 +1,249 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Consulta médica de 1h30 com o Dr. Nicolas Flores Bittencourt e o seu Mapa Clínico em PDF."></head><body>
+<title>Mapa Clínico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: página de uma coluna para quem chega do celular; o documento do Mapa é o centro visual; CTA de WhatsApp fixo no rodapé */
+:root{
+  --paper:#F5F1EA; --card:#FFFDF9; --ink:#1C2A2E; --muted:#56635F;
+  --petrol:#1F4D57; --petrol-2:#163A42; --amber:#B37A2E; --amber-soft:#F1E3CC;
+  --sage:#DCE8E1; --line:rgba(28,42,46,.13);
+  --display:'Newsreader', Georgia, 'Times New Roman', serif;
+  --body:'Manrope', 'Segoe UI', system-ui, sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#121A1C;--card:#1A2427;--ink:#ECE7DE;--muted:#A8B3AF;--petrol:#7FB3BD;--petrol-2:#0E2A30;--amber:#E0AA62;--amber-soft:#3A2E1D;--sage:#1F3329;--line:rgba(236,231,222,.14);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#121A1C;--card:#1A2427;--ink:#ECE7DE;--muted:#A8B3AF;--petrol:#7FB3BD;--petrol-2:#0E2A30;--amber:#E0AA62;--amber-soft:#3A2E1D;--sage:#1F3329;--line:rgba(236,231,222,.14);color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:84px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:20px}
+section{padding-block:56px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(38px,8vw,58px)} h2{font-size:clamp(30px,6vw,42px)} h3{font-size:22px;font-weight:500}
+em{font-style:italic;color:var(--amber)}
+p{margin:0}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--petrol)}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:18px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 28px;border-radius:999px;background:#1F4D57;color:#FFFDF9;font-weight:700;font-size:16px;text-decoration:none;text-align:center}
+.btn svg{flex:0 0 auto}
+.btn:hover{background:#163A42}
+/* hero */
+.hero{padding-top:28px}
+.who{display:flex;align-items:center;gap:14px}
+.who img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center 18%;border:2px solid var(--amber)}
+.who b{display:block;font-size:16px}.who span{font-size:13px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:13px;padding:6px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+/* dores */
+.pains{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pains li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:24px 1fr;gap:10px}
+.pains li::before{content:"";width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--amber)}
+.turn{font-family:var(--display);font-size:clamp(24px,5vw,30px);line-height:1.25}
+/* mapa */
+.doc{background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:0 24px 50px rgba(28,42,46,.14);padding:26px 22px;display:flex;flex-direction:column;gap:22px}
+.doc-head{border-bottom:2px solid var(--petrol);padding-bottom:14px;display:flex;flex-direction:column;gap:4px}
+.doc-head .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700}
+.doc-head b{font-size:16px}.doc-head span{font-size:13px;color:var(--muted)}
+.blk{position:relative;padding-left:38px;display:flex;flex-direction:column;gap:10px}
+.pin{position:absolute;left:0;top:-2px;width:26px;height:26px;border-radius:50%;background:var(--petrol);color:var(--card);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.blk h4{margin:0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--petrol)}
+.gauge{display:flex;flex-direction:column;gap:6px}
+.g-top{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.g-top b{font-family:var(--display);font-size:24px;font-weight:500;line-height:1;white-space:nowrap}
+.g-bar{position:relative;display:flex;height:9px;border-radius:99px}
+.g-bar span{height:100%}.g-bar span:first-child{border-radius:99px 0 0 99px}.g-bar span:last-of-type{border-radius:0 99px 99px 0}
+.z1{background:#A9C9B6}.z2{background:#D8D3A6}.z3{background:#E2C48A}.z4{background:#D49A6A}.z5{background:#B4654A}
+.g-mark{position:absolute;top:-5px;width:4px;height:19px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--card)}
+.g-scale{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tbl td{padding:9px 4px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl td:nth-child(2){font-weight:600}
+.chip{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:99px;line-height:1.3}
+.warn{background:var(--amber-soft);color:var(--ink)}.ok{background:var(--sage);color:var(--ink)}
+.scales{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.scales div{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.scales span{font-size:12px;color:var(--muted)}.scales b{font-family:var(--display);font-size:28px;font-weight:500;line-height:1.05}.scales small{font-size:11px;color:var(--amber);font-weight:600}
+.prio{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14.5px}
+.doc-foot{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.legend{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.legend li{display:grid;grid-template-columns:30px 1fr;gap:12px}
+.legend .pin{position:static}
+.legend b{display:block;font-size:16px}
+/* passos */
+.steps{display:grid;gap:14px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start}
+.step i{font-style:normal;font-family:var(--display);font-size:32px;line-height:1;color:var(--amber)}
+/* sobre */
+.about{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start}
+.about img{width:100%;aspect-ratio:4/5;max-width:100%;object-fit:cover;object-position:center 18%;border-radius:16px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.facts span{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:2px;min-width:0}
+.facts b{font-family:var(--display);font-size:20px;color:var(--ink);font-weight:500;line-height:1.15}
+blockquote{margin:0;border-left:3px solid var(--amber);padding:4px 0 4px 16px;font-family:var(--display);font-style:italic;font-size:19px;line-height:1.4}
+blockquote cite{display:block;margin-top:6px;font-family:var(--body);font-style:normal;font-size:12px;color:var(--muted)}
+/* preço */
+.price-card{background:var(--petrol-2);color:#F5F1EA;border-radius:22px;padding:30px 24px;display:flex;flex-direction:column;gap:16px}
+.price-card .eyebrow{color:#E0AA62}
+.price{font-family:var(--display);font-size:54px;line-height:1}
+.price-card ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:#DCE4E1}
+.price-card .btn{background:#E0AA62;color:#163A42}
+.price-card .btn:hover{background:#EBBD7E}
+.pay{display:flex;flex-wrap:wrap;gap:8px}.pay span{font-size:14px;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(255,253,249,.1);border:1px solid rgba(255,253,249,.22);color:#F5F1EA}
+.price-card small{color:#B9C6C2;font-size:13px}
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--amber);font-size:22px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin-top:10px;color:var(--muted)}
+.alert{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:18px}
+footer{font-size:12.5px;color:var(--muted);padding-block:28px;text-align:center}
+/* barra fixa */
+.bar{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:10}
+.bar .btn{width:100%;max-width:520px}
+@media (max-width:520px){.about{grid-template-columns:1fr}.about img{max-width:220px}.facts{grid-template-columns:1fr}}
+@media (min-width:700px){.scales{grid-template-columns:repeat(4,minmax(0,1fr))}.doc{padding:34px}}
+</style>
+
+<main>
+<section class="hero"><div class="wrap stack" style="gap:24px">
+  <div class="who"><img src="nicolas.jpg" alt="Dr. Nicolas Flores Bittencourt"><div><b>Dr. Nicolas Flores Bittencourt</b><span>Médico · CRM/RS 54190</span></div></div>
+  <span class="eyebrow">Mapa Clínico</span>
+  <h1>Você toma o remédio certo e continua se sentindo mal? <em>Talvez ninguém tenha medido o resto.</em></h1>
+  <p class="muted" style="font-size:18px">Uma consulta médica de 1h30, online, que mede ansiedade, humor, sono, medicações e saúde física, e termina com um documento seu: o Mapa Clínico, com o que está acontecendo e o que fazer primeiro.</p>
+  <a class="btn" target="_blank" rel="noopener" href="https://wa.me/5555991813838?text=Ol%C3%A1%21%20Vim%20pelo%20TikTok%20e%20quero%20agendar%20meu%20Mapa%20Cl%C3%ADnico%20com%20o%20Dr.%20Nicolas.">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg>
+    Quero meu Mapa Clínico
+  </a>
+  <div class="chips"><span>Online para todo o Brasil</span><span>Consulta de 1h30</span><span>Documento em PDF</span></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap stack">
+  <span class="eyebrow">Você se reconhece?</span>
+  <h2>Isso costuma ser o que me trazem</h2>
+  <ul class="pains">
+    <li><span>Já trocou de antidepressivo mais de uma vez e nenhum parece o certo</span></li>
+    <li><span>O remédio ajudou, mas trouxe efeitos que ninguém explicou: peso, calor, libido, sono</span></li>
+    <li><span>Vive cansada, dorme mal e acorda como se não tivesse dormido</span></li>
+    <li><span>Tem medo de parar o remédio, ou já tentou e piorou</span></li>
+    <li><span>Saiu de consultas de 15 minutos com uma receita e nenhuma explicação</span></li>
+  </ul>
+  <p class="turn">O problema raramente é só o remédio. <em>É ninguém ter olhado o quadro inteiro.</em></p>
+</div></section>
+
+<section style="padding-top:0" id="mapa"><div class="wrap stack" style="gap:26px">
+  <span class="eyebrow">Por dentro do Mapa</span>
+  <h2>Veja o que você recebe</h2>
+  <p class="muted">Exemplo real de Mapa, com uma paciente fictícia.</p>
+
+  <article class="doc" aria-label="Exemplo de Mapa Clínico com paciente fictícia">
+    <div class="doc-head"><span class="k">Mapa Clínico · Dia 0</span><b>C. R., 38 anos, feminino</b><span>Cansaço, sono ruim, ansiedade. Ganhou 6 kg desde que começou o antidepressivo.</span></div>
+
+    <div class="blk"><span class="pin">1</span><h4>Mente e sono, medidos</h4>
+      <div class="scales">
+        <div><span>Ansiedade</span><b>11</b><small>GAD-7 · moderada</small></div>
+        <div><span>Humor</span><b>13</b><small>PHQ-9 · moderado</small></div>
+        <div><span>Insônia</span><b>17</b><small>ISI · moderada</small></div>
+        <div><span>Risco de apneia</span><b>1</b><small>STOP-Bang · baixo</small></div>
+      </div>
+    </div>
+
+    <div class="blk"><span class="pin">2</span><h4>O que os exames mostram</h4>
+      <table class="tbl">
+        <tr><td>TSH</td><td>6,8</td><td><span class="chip warn">Tireoide: investigar</span></td></tr>
+        <tr><td>Ferritina</td><td>12</td><td><span class="chip warn">Ferro baixo</span></td></tr>
+        <tr><td>Vitamina B12</td><td>Normal</td><td><span class="chip ok">Adequado</span></td></tr>
+        <tr><td>Pressão</td><td>118 / 76</td><td><span class="chip ok">Adequada</span></td></tr>
+      </table>
+    </div>
+
+    <div class="blk"><span class="pin">3</span><h4>Seus riscos, em número</h4>
+      <div class="gauge">
+        <div class="g-top"><span>Infarto e AVC em 10 anos</span><b>1,4%</b></div>
+        <div class="g-bar"><span class="z1" style="width:16.7%"></span><span class="z3" style="width:50%"></span><span class="z5" style="width:33.3%"></span><i class="g-mark" style="left:4.7%"></i></div>
+        <div class="g-scale"><span>Baixo &lt;5%</span><span>Intermediário</span><span>Alto &gt;20%</span></div>
+      </div>
+      <div class="gauge">
+        <div class="g-top"><span>Diabetes tipo 2 em 10 anos</span><b>13 pts</b></div>
+        <div class="g-bar"><span class="z1" style="width:26.9%"></span><span class="z2" style="width:19.2%"></span><span class="z3" style="width:11.5%"></span><span class="z4" style="width:23.1%"></span><span class="z5" style="width:19.3%"></span><i class="g-mark" style="left:50%"></i></div>
+        <div class="g-scale"><span>Baixo</span><span>Moderado: cerca de 1 em 6</span><span>Alto</span></div>
+      </div>
+    </div>
+
+    <div class="blk"><span class="pin">4</span><h4>Prioridades dos próximos meses</h4>
+      <ol class="prio">
+        <li>Investigar tireoide e repor ferro: podem explicar parte do cansaço</li>
+        <li>Revisar o antidepressivo atual considerando peso e sono</li>
+        <li>Tratar a insônia com terapia de primeira linha</li>
+        <li>Plano de atividade física possível para a rotina</li>
+        <li>Atualizar preventivo e vacinas</li>
+      </ol>
+    </div>
+    <p class="doc-foot">Exemplo ilustrativo com paciente fictícia. Cada Mapa é individual. Escalas: GAD-7, PHQ-9, ISI, STOP-Bang, FINDRISC e Escore de Risco Global (SBC).</p>
+  </article>
+
+  <ol class="legend">
+    <li><span class="pin">1</span><div><b>A sua ansiedade em número</b><p class="muted">Escalas usadas no mundo todo mostram a intensidade de ansiedade, humor e insônia, e servem de régua para saber se o tratamento está funcionando.</p></div></li>
+    <li><span class="pin">2</span><div><b>O que pode estar por trás</b><p class="muted">Tireoide, ferro e outras causas físicas de cansaço e ansiedade são revisadas antes de culpar ou trocar o remédio.</p></div></li>
+    <li><span class="pin">3</span><div><b>A saúde que não é só mental</b><p class="muted">Risco de coração e de diabetes calculados, porque remédio, sono e peso mexem nisso também.</p></div></li>
+    <li><span class="pin">4</span><div><b>Por onde começar</b><p class="muted">Prioridades em ordem. Você sai sabendo o que fazer, e por quê.</p></div></li>
+  </ol>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap stack">
+  <span class="eyebrow">Como funciona</span>
+  <h2>Três passos</h2>
+  <div class="steps">
+    <div class="step"><i>1</i><div><h3>Você chama no WhatsApp</h3><p class="muted">A equipe explica tudo e agenda o melhor horário.</p></div></div>
+    <div class="step"><i>2</i><div><h3>Consulta de 1h30, online</h3><p class="muted">História completa, medicações, exames que você já tem e as escalas. Receitas e documentos quando houver indicação, como em qualquer consulta.</p></div></div>
+    <div class="step"><i>3</i><div><h3>Você recebe o seu Mapa</h3><p class="muted">Um PDF com seus números, o que eles significam e as prioridades. Se quiser, seguimos juntos no acompanhamento de 90 dias.</p></div></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap about">
+  <img src="nicolas.jpg" alt="Dr. Nicolas Flores Bittencourt de jaleco, braços cruzados">
+  <div class="stack">
+    <span class="eyebrow">Quem vai te atender</span>
+    <h2>Dr. Nicolas Flores Bittencourt</h2>
+    <p>Formado pela Universidade Federal do Rio Grande (FURG) há mais de quatro anos, com a rotina dedicada à saúde mental: atendimento a pessoas em trauma agudo, internações psiquiátricas, saúde mental no sistema prisional e perícia médica na Justiça Federal.</p>
+    <p class="muted">Aqui a gente trata saúde mental com ciência, sem misticismo e sem solução simples para problema complexo.</p>
+    <div class="facts"><span><b>+4 anos</b>de formado</span><span><b>38 mil</b>acompanham no TikTok</span><span><b>Perito</b>Justiça Federal</span></div>
+    <blockquote>"É um médico atencioso, que olha não só para os sintomas, mas também para as questões emocionais e físicas do paciente. É muito humano."<cite>Paciente · comentário público, publicado com autorização</cite></blockquote>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="price-card">
+    <span class="eyebrow">Investimento</span>
+    <h2 style="color:#F5F1EA">Consulta de 1h30 + Mapa Clínico</h2>
+    <div class="price">R$ 1.490</div>
+    <div class="pay"><span>Parcelado no cartão</span><span>Desconto no Pix</span></div>
+    <ul><li>Consulta médica online de 1h30</li><li>Escalas de saúde mental e escores de risco</li><li>Revisão das suas medicações</li><li>Mapa Clínico em PDF com prioridades</li></ul>
+    <a class="btn" target="_blank" rel="noopener" href="https://wa.me/5555991813838?text=Ol%C3%A1%21%20Vim%20pelo%20TikTok%20e%20quero%20agendar%20meu%20Mapa%20Cl%C3%ADnico%20com%20o%20Dr.%20Nicolas.">Agendar pelo WhatsApp</a>
+    <small>Exames laboratoriais não inclusos; podem ser feitos pelo seu plano de saúde. Atendimento particular.</small>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <span class="eyebrow">Dúvidas</span>
+  <h2 style="margin-top:10px">Antes de agendar</h2>
+  <div style="margin-top:14px">
+    <details><summary>Vou sair com receita?</summary><p>Se houver indicação, sim. É uma consulta médica completa, com receitas, pedidos de exame e documentos quando necessários.</p></details>
+    <details><summary>Vocês vão trocar o meu remédio?</summary><p>Só se fizer sentido para o seu caso. Muitas vezes o ajuste é de dose, de horário ou de tratar algo que estava por trás. Nada é mudado sem explicação.</p></details>
+    <details><summary>Quais as formas de pagamento?</summary><p>Cartão de crédito parcelado ou Pix com desconto. As condições são informadas no WhatsApp na hora do agendamento.</p></details>
+    <details><summary>Preciso fazer exames antes?</summary><p>Traga os que você já tem. Se faltar algo, pedimos na consulta e você pode fazer pelo seu plano.</p></details>
+    <details><summary>Atende de qualquer cidade?</summary><p>Sim. A consulta é online, por telemedicina, conforme as regras do CFM.</p></details>
+    <details><summary>Vocês garantem resultado?</summary><p>Não. Ninguém sério promete resultado em saúde. O que garantimos é método: medir, explicar, priorizar e acompanhar.</p></details>
+  </div>
+  <p class="alert">Este não é um serviço de urgência. Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV, 24 horas) ou procure o pronto atendimento mais próximo.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">Dr. Nicolas Flores Bittencourt · Médico · CRM/RS 54190<br>WhatsApp (55) 99181-3838</div></footer>
+
+<div class="bar"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/5555991813838?text=Ol%C3%A1%21%20Vim%20pelo%20TikTok%20e%20quero%20agendar%20meu%20Mapa%20Cl%C3%ADnico%20com%20o%20Dr.%20Nicolas.">Quero meu Mapa Clínico</a></div>
+</body></html>
